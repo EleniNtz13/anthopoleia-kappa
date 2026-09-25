@@ -1,0 +1,3228 @@
+/* =====================================================
+   RESET
+   ===================================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"DM Sans",Arial,sans-serif;
+    color:#263228;
+    background:#f8f5ef;
+    line-height:1.6;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+
+/* =====================================================
+   TOP BAR
+   ===================================================== */
+
+.topbar{
+    min-height:42px;
+    padding:8px 5%;
+
+    background:#173d2b;
+    color:#f6f2e9;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    font-size:12px;
+}
+
+.hours{
+    text-align:center;
+    flex:1;
+}
+
+.topbar i{
+    opacity:.4;
+    margin:0 10px;
+}
+
+.social{
+    display:flex;
+    gap:8px;
+}
+
+.social a{
+    width:27px;
+    height:27px;
+
+    border:1px solid #ffffff59;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:
+        background .25s ease,
+        border-color .25s ease;
+}
+
+.social a:hover{
+    background:#ffffff14;
+    border-color:#ffffff90;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.header{
+    height:92px;
+
+    padding:0 5%;
+
+    background:#fffffff7;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    position:sticky;
+    top:0;
+
+    z-index:100;
+
+    box-shadow:
+        0 3px 20px #1428190f;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:13px;
+
+    color:#173d2b;
+
+    min-width:190px;
+}
+
+.flower-logo{
+    color:#b59a63;
+    font-size:42px;
+}
+
+.logo small{
+    display:block;
+
+    font-size:10px;
+    font-weight:700;
+
+    letter-spacing:.24em;
+}
+
+.logo strong{
+    display:block;
+
+    font-family:"Playfair Display",Georgia,serif;
+
+    font-size:28px;
+}
+
+.header nav{
+    display:flex;
+    gap:24px;
+}
+
+.header nav a{
+    font-size:11px;
+    font-weight:700;
+
+    letter-spacing:.08em;
+
+    padding:35px 0;
+
+    position:relative;
+}
+
+.header nav a.active{
+    color:#173d2b;
+}
+
+/* =====================================================
+   ACTIVE MENU LINE
+   ===================================================== */
+
+.header nav a.active:before{
+    display:none;
+}
+
+
+
+/* =====================================================
+   CALL / MESSAGE BUTTONS
+   ===================================================== */
+
+.cta-buttons{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex:0 0 auto;
+}
+
+.cta-buttons a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    min-height:42px;
+    padding:12px 15px;
+
+    white-space:nowrap;
+
+    font-size:10px;
+    font-weight:700;
+
+    letter-spacing:.07em;
+
+    transition:
+        background .25s ease,
+        transform .25s ease;
+}
+
+.cta-primary{
+    background:#173d2b;
+    color:#fff;
+}
+
+.cta-primary:hover{
+    background:#28583e;
+    transform:translateY(-1px);
+}
+
+.cta-secondary{
+    background:#b59a63;
+    color:#fff;
+}
+
+.cta-secondary:hover{
+    background:#9f8652;
+    transform:translateY(-1px);
+}
+
+
+.menu{
+    display:none;
+    border:0;
+    background:none;
+    color:#173d2b;
+    font-size:27px;
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   DROPDOWN
+   ===================================================== */
+
+.nav-item{
+    position:relative;
+}
+
+.nav-parent{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.dropdown{
+    position:absolute;
+
+    top:calc(100% - 12px);
+    left:0;
+
+    transform:translate(-50%,10px);
+
+    width:245px;
+
+    padding:12px 0;
+
+    background:#fff;
+
+    border-top:2px solid #b59a63;
+
+    box-shadow:
+        0 18px 45px rgba(20,40,25,.16);
+
+    opacity:0;
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+
+    z-index:300;
+}
+
+.dropdown::before{
+    display:none;
+}
+
+
+.dropdown a{
+    display:block;
+
+    padding:13px 20px !important;
+
+    color:#314238;
+
+    font-size:10px !important;
+    font-weight:700;
+
+    letter-spacing:.07em;
+
+    white-space:normal;
+
+    border-bottom:1px solid #eee9df;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        padding-left .2s ease;
+}
+
+.dropdown a:last-child{
+    border-bottom:0;
+}
+
+.dropdown a:hover{
+    background:#f8f5ef;
+
+    color:#173d2b;
+
+    padding-left:25px !important;
+}
+
+@media(min-width:801px){
+
+    .nav-item.has-dropdown:hover .dropdown{
+        opacity:1;
+        visibility:visible;
+
+        transform:translate(-50%,0);
+
+        pointer-events:auto;
+    }
+
+}
+/* =====================================================
+   MAIN NAVIGATION
+   ===================================================== */
+
+.header nav{
+    display:flex;
+    align-items:stretch;
+
+    gap:24px;
+
+    height:100%;
+}
+
+.header nav > a,
+.header nav .nav-parent > a{
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    height:100%;
+
+    padding:0;
+
+    color:#263228;
+
+    font-size:11px;
+    font-weight:700;
+
+    letter-spacing:.08em;
+
+    white-space:nowrap;
+
+    transition:
+        color .25s ease;
+}
+
+
+/* =====================================================
+   MAIN MENU HOVER / ACTIVE LINE
+   ===================================================== */
+
+.header nav > a::after,
+.header nav .nav-parent > a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:31px;
+
+    height:1.5px;
+
+    background:#b59a63;
+
+    transform:scaleX(0);
+    transform-origin:center;
+
+    transition:
+        transform .25s ease;
+}
+
+.header nav > a:hover,
+.header nav .nav-parent > a:hover{
+
+    color:#173d2b;
+}
+
+.header nav > a:hover::after,
+.header nav .nav-parent > a:hover::after,
+.header nav > a.active::after,
+.header nav .nav-parent > a.active::after{
+
+    transform:scaleX(1);
+}
+
+
+/* =====================================================
+   NAV ITEM
+   ===================================================== */
+
+.nav-item{
+    position:relative;
+
+    height:100%;
+
+    display:flex;
+    align-items:stretch;
+}
+
+.nav-parent{
+    display:flex;
+    align-items:center;
+
+    height:100%;
+}
+
+
+/* =====================================================
+   DROPDOWN
+   ===================================================== */
+
+.dropdown{
+
+    position:absolute;
+
+    top:100%;
+    left:50%;
+
+    transform:
+        translate(-50%, 12px);
+
+    width:315px;
+
+    padding:0;
+
+    background:#fff;
+
+    border-top:2px solid #b59a63;
+
+    box-shadow:
+        0 18px 45px rgba(20,40,25,.16);
+
+    opacity:0;
+    visibility:hidden;
+
+    pointer-events:none;
+
+    z-index:300;
+
+    transition:
+        opacity .22s ease,
+        transform .22s ease,
+        visibility .22s ease;
+}
+
+
+/* =====================================================
+   DROPDOWN OPEN - DESKTOP
+   ===================================================== */
+
+@media (min-width:801px){
+
+    .nav-item.has-dropdown:hover > .dropdown{
+
+        opacity:1;
+        visibility:visible;
+
+        transform:
+            translate(-50%, 0);
+
+        pointer-events:auto;
+    }
+
+}
+
+
+/* =====================================================
+   DROPDOWN DECORATION
+   ===================================================== */
+
+.dropdown::before{
+    display:none;
+}
+
+
+/* =====================================================
+   DROPDOWN LINKS
+   ===================================================== */
+
+.dropdown a{
+
+    display:flex;
+    align-items:center;
+
+    min-height:48px;
+
+    padding:13px 25px !important;
+
+    color:#314238;
+
+    font-size:10px !important;
+    font-weight:700;
+
+    letter-spacing:.07em;
+
+    white-space:normal;
+
+    border-bottom:1px solid #eee9df;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        padding-left .2s ease;
+}
+
+.dropdown a:last-child{
+    border-bottom:0;
+}
+
+.dropdown a:hover{
+
+    background:#f8f5ef;
+
+    color:#173d2b;
+
+    padding-left:31px !important;
+}
+
+
+/* =====================================================
+   REMOVE ANY DROPDOWN ARROW
+   ===================================================== */
+
+.dropdown-toggle{
+    display:none !important;
+}
+
+
+
+
+/* =====================================================
+   MOBILE MENU BUTTON
+   ===================================================== */
+
+.menu{
+    display:none;
+}
+
+
+/* =====================================================
+   MOBILE MENU
+   ===================================================== */
+
+@media(max-width:800px){
+
+    .menu{
+
+        display:block;
+
+        border:0;
+
+        background:none;
+
+        font-size:27px;
+
+        color:#173d2b;
+
+        cursor:pointer;
+
+        line-height:1;
+    }
+
+
+    .header nav{
+
+        display:none;
+
+        position:absolute;
+
+        left:0;
+        right:0;
+
+        top:72px;
+
+        height:auto;
+
+        background:#fff;
+
+        padding:15px 20px;
+
+        flex-direction:column;
+
+        gap:0;
+
+        box-shadow:
+            0 10px 20px #14281912;
+    }
+
+    .header nav.open{
+        display:flex;
+    }
+
+
+    .header nav > a,
+    .header nav .nav-parent > a{
+
+        display:flex;
+
+        width:100%;
+
+        min-height:45px;
+
+        height:auto;
+
+        padding:13px 5px;
+
+        border-bottom:1px solid #eee;
+
+        align-items:center;
+    }
+
+
+    /* Δεν θέλουμε χρυσή γραμμή στο mobile */
+
+    .header nav > a::after,
+    .header nav .nav-parent > a::after{
+
+        display:none;
+    }
+
+
+    /* ---------------------------------------------
+       MOBILE NAV ITEMS
+       --------------------------------------------- */
+
+    .header nav .nav-item{
+
+        width:100%;
+
+        height:auto;
+
+        display:block;
+    }
+
+    .header nav .nav-parent{
+
+        width:100%;
+
+        height:auto;
+
+        display:block;
+    }
+
+
+    /* ---------------------------------------------
+       MOBILE DROPDOWNS
+       --------------------------------------------- */
+
+    .header nav .dropdown{
+
+        position:static;
+
+        width:100%;
+
+        padding:0;
+
+        transform:none;
+
+        background:#f8f5ef;
+
+        border-top:0;
+
+        box-shadow:none;
+
+        opacity:0;
+
+        visibility:hidden;
+
+        max-height:0;
+
+        overflow:hidden;
+
+        pointer-events:none;
+
+        transition:
+            max-height .35s ease,
+            opacity .25s ease,
+            visibility .25s ease;
+    }
+
+
+    .header nav .dropdown::before{
+        display:none;
+    }
+
+
+    /*
+       Στο mobile το dropdown ανοίγει
+       όταν το .nav-item αποκτήσει
+       την κλάση .dropdown-open.
+    */
+
+    .header nav .nav-item.dropdown-open
+    .dropdown{
+
+        opacity:1;
+
+        visibility:visible;
+
+        max-height:600px;
+
+        pointer-events:auto;
+    }
+
+
+    .header nav .dropdown a{
+
+        display:flex;
+
+        width:100%;
+
+        min-height:42px;
+
+        padding:12px 18px 12px 25px !important;
+
+        border-bottom:1px solid #e4ded4;
+
+        color:#596158;
+
+        font-size:9px !important;
+
+        letter-spacing:.08em;
+    }
+
+    .header nav .dropdown a:hover{
+
+        padding-left:30px !important;
+
+        background:#eee9df;
+
+        color:#173d2b;
+    }
+
+
+    /* Κρύβουμε οποιοδήποτε πιθανό βελάκι */
+
+    .dropdown-toggle{
+        display:none !important;
+    }
+
+
+    /* CALL / MESSAGE */
+
+    .cta-buttons{
+        display:none;
+    }
+
+}
+
+
+/* =====================================================
+   HERO
+   ===================================================== */
+
+/* =====================================================
+   HERO — 7 PHOTO COLLAGE
+   ===================================================== */
+
+.seasonal-hero{
+    min-height:570px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:#173d2b;
+}
+
+
+/* =====================================================
+   COLLAGE CONTAINER
+   ===================================================== */
+
+.seasonal-collage{
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    z-index:0;
+}
+
+
+/* =====================================================
+   COLLAGE PHOTOS
+   ===================================================== */
+
+.collage-photo{
+    position:absolute;
+    width:15vw;
+    height:430px;
+    overflow:hidden;
+    background:transparent;
+    border:none;
+    box-shadow:0 12px 35px rgba(0,0,0,.22);
+}
+
+.collage-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+}
+
+
+/* =====================================================
+   PHOTO 1
+   ===================================================== */
+
+.collage-photo-1{
+    width:34%;
+    height:65%;
+
+    left:-2%;
+    top:2%;
+
+    transform:
+        rotate(-4deg);
+}
+
+
+/* =====================================================
+   PHOTO 2
+   ===================================================== */
+
+.collage-photo-2{
+    width:29%;
+    height:48%;
+
+    left:23%;
+    top:-7%;
+
+    transform:
+        rotate(3deg);
+}
+
+
+/* =====================================================
+   PHOTO 3
+   ===================================================== */
+
+.collage-photo-3{
+    width:31%;
+    height:62%;
+
+    left:45%;
+    top:-5%;
+
+    transform:
+        rotate(-2deg);
+}
+
+
+/* =====================================================
+   PHOTO 4
+   ===================================================== */
+
+.collage-photo-4{
+    width:32%;
+    height:69%;
+
+    right:-4%;
+    top:1%;
+
+    transform:
+        rotate(4deg);
+}
+
+
+/* =====================================================
+   PHOTO 5
+   ===================================================== */
+
+.collage-photo-5{
+    width:30%;
+    height:55%;
+
+    left:5%;
+    bottom:-8%;
+
+    transform:
+        rotate(4deg);
+}
+
+
+/* =====================================================
+   PHOTO 6
+   ===================================================== */
+
+.collage-photo-6{
+    width:29%;
+    height:52%;
+
+    left:37%;
+    bottom:-7%;
+
+    transform:
+        rotate(-4deg);
+}
+
+
+/* =====================================================
+   PHOTO 7
+   ===================================================== */
+
+.collage-photo-7{
+    width:32%;
+    height:58%;
+
+    right:7%;
+    bottom:-9%;
+
+    transform:
+        rotate(-3deg);
+}
+
+
+/* =====================================================
+   DARK OVERLAY
+   ===================================================== */
+
+.seasonal-collage-overlay{
+    position:absolute;
+
+    inset:0;
+
+    z-index:1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(16,47,33,.82) 0%,
+            rgba(23,61,43,.55) 35%,
+            rgba(23,61,43,.52) 65%,
+            rgba(16,47,33,.78) 100%
+        );
+
+    pointer-events:none;
+}
+
+
+/* =====================================================
+   EXTRA SOFT OVERLAY
+   ===================================================== */
+
+.seasonal-collage-overlay::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(181,154,99,.08),
+            transparent 55%
+        );
+
+    pointer-events:none;
+}
+
+
+/* =====================================================
+   HERO CONTENT
+   ===================================================== */
+
+.seasonal-hero-content{
+    position:relative;
+
+    z-index:2;
+
+    width:min(900px,90%);
+
+    text-align:center;
+
+    color:#fff;
+
+    padding:90px 20px;
+
+    text-shadow:
+        0 2px 18px rgba(0,0,0,.28);
+}
+
+
+/* =====================================================
+   HERO LABEL
+   ===================================================== */
+
+.seasonal-hero-content>p{
+    color:#f0dfb1;
+
+    font-size:11px;
+    font-weight:700;
+
+    letter-spacing:.30em;
+
+    margin-bottom:18px;
+}
+
+
+/* =====================================================
+   HERO TITLE
+   ===================================================== */
+
+.seasonal-hero-content h1{
+    font-family:"Playfair Display",Georgia,serif;
+
+    font-size:clamp(48px,7vw,82px);
+
+    font-weight:500;
+
+    line-height:1.12;
+
+    color:#fff;
+}
+
+.seasonal-hero-content h1 em{
+    color:#f0dfb1;
+}
+
+
+/* =====================================================
+   HERO RULE
+   ===================================================== */
+
+.hero-rule{
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:14px;
+
+    margin:27px auto;
+
+    color:#f0dfb1;
+}
+
+.hero-rule span{
+    width:100px;
+    height:1px;
+
+    background:#f0dfb1aa;
+}
+
+
+/* =====================================================
+   HERO INTRO
+   ===================================================== */
+
+.hero-intro{
+    width:min(650px,100%);
+
+    margin:auto;
+
+    color:#ffffffe8;
+
+    font-size:15px;
+
+    line-height:1.9;
+}
+
+
+/* =====================================================
+   DESKTOP — SLIGHT COLLAGE DEPTH
+   ===================================================== */
+
+@media(min-width:801px){
+
+    .collage-photo-1{
+        z-index:1;
+    }
+
+    .collage-photo-2{
+        z-index:2;
+    }
+
+    .collage-photo-3{
+        z-index:1;
+    }
+
+    .collage-photo-4{
+        z-index:2;
+    }
+
+    .collage-photo-5{
+        z-index:3;
+    }
+
+    .collage-photo-6{
+        z-index:2;
+    }
+
+    .collage-photo-7{
+        z-index:3;
+    }
+
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media(max-width:1000px){
+
+    .collage-photo-1{
+        width:38%;
+    }
+
+    .collage-photo-2{
+        width:34%;
+        left:20%;
+    }
+
+    .collage-photo-3{
+        width:36%;
+        left:42%;
+    }
+
+    .collage-photo-4{
+        width:38%;
+    }
+
+    .collage-photo-5{
+        width:35%;
+        left:2%;
+    }
+
+    .collage-photo-6{
+        width:34%;
+        left:34%;
+    }
+
+    .collage-photo-7{
+        width:37%;
+        right:2%;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE — 7 PHOTO COLLAGE
+   ===================================================== */
+
+@media(max-width:800px){
+
+    .seasonal-hero{
+        min-height:510px;
+    }
+
+
+    .seasonal-collage{
+        inset:-10px -5px;
+    }
+
+
+    .collage-photo{
+        border-width:3px;
+
+        box-shadow:
+            0 10px 25px rgba(0,0,0,.25);
+    }
+
+
+    /* PHOTO 1 */
+
+    .collage-photo-1{
+        width:52%;
+        height:48%;
+
+        left:-8%;
+        top:-4%;
+
+        transform:rotate(-5deg);
+    }
+
+
+    /* PHOTO 2 */
+
+    .collage-photo-2{
+        width:47%;
+        height:40%;
+
+        left:28%;
+        top:-8%;
+
+        transform:rotate(4deg);
+    }
+
+
+    /* PHOTO 3 */
+
+    .collage-photo-3{
+        width:50%;
+        height:47%;
+
+        right:-9%;
+        left:auto;
+        top:4%;
+
+        transform:rotate(-4deg);
+    }
+
+
+    /* PHOTO 4 */
+
+    .collage-photo-4{
+        width:48%;
+        height:45%;
+
+        left:-7%;
+        top:39%;
+
+        transform:rotate(4deg);
+    }
+
+
+    /* PHOTO 5 */
+
+    .collage-photo-5{
+        width:47%;
+        height:42%;
+
+        left:27%;
+        top:32%;
+
+        bottom:auto;
+
+        transform:rotate(-3deg);
+    }
+
+
+    /* PHOTO 6 */
+
+    .collage-photo-6{
+        width:50%;
+        height:46%;
+
+        right:-9%;
+        left:auto;
+        top:42%;
+
+        bottom:auto;
+
+        transform:rotate(4deg);
+    }
+
+
+    /* PHOTO 7 */
+
+    .collage-photo-7{
+        width:50%;
+        height:39%;
+
+        left:25%;
+        right:auto;
+
+        bottom:-12%;
+
+        transform:rotate(3deg);
+    }
+
+
+    /* MOBILE OVERLAY */
+
+    .seasonal-collage-overlay{
+        background:
+            linear-gradient(
+                180deg,
+                rgba(16,47,33,.68) 0%,
+                rgba(23,61,43,.45) 45%,
+                rgba(16,47,33,.78) 100%
+            );
+    }
+
+
+    .seasonal-hero-content{
+        width:94%;
+
+        padding:70px 10px;
+    }
+
+
+    .seasonal-hero-content>p{
+        font-size:9px;
+
+        letter-spacing:.20em;
+    }
+
+
+    .seasonal-hero-content h1{
+        font-size:clamp(40px,12vw,62px);
+    }
+
+
+    .hero-rule{
+        margin:22px auto;
+    }
+
+
+    .hero-rule span{
+        width:55px;
+    }
+
+
+    .hero-intro{
+        font-size:13px;
+
+        line-height:1.8;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+   ===================================================== */
+
+@media(max-width:480px){
+
+    .seasonal-hero{
+        min-height:470px;
+    }
+
+
+    .collage-photo{
+        border-width:2px;
+    }
+
+
+    .collage-photo-1{
+        width:57%;
+        height:43%;
+    }
+
+
+    .collage-photo-2{
+        width:52%;
+        height:36%;
+
+        left:25%;
+    }
+
+
+    .collage-photo-3{
+        width:55%;
+        height:42%;
+    }
+
+
+    .collage-photo-4{
+        width:54%;
+        height:42%;
+    }
+
+
+    .collage-photo-5{
+        width:52%;
+        height:39%;
+
+        left:24%;
+    }
+
+
+    .collage-photo-6{
+        width:55%;
+        height:42%;
+    }
+
+
+    .collage-photo-7{
+        width:55%;
+        height:36%;
+
+        left:23%;
+    }
+
+
+    .seasonal-hero-content h1{
+        font-size:39px;
+    }
+
+
+    .hero-intro{
+        font-size:12px;
+    }
+
+}
+
+
+/* =====================================================
+   GENERAL
+   ===================================================== */
+
+.section{
+    width:min(1180px,90%);
+
+    margin:auto;
+
+    padding:100px 0;
+}
+
+.section-title{
+    text-align:center;
+
+    margin-bottom:50px;
+}
+
+.section-title>p{
+    color:#b59a63;
+
+    font-size:10px;
+    font-weight:700;
+
+    letter-spacing:.25em;
+
+    margin-bottom:11px;
+}
+
+.section-title h2{
+    color:#173d2b;
+
+    font-family:"Playfair Display",Georgia,serif;
+
+    font-size:clamp(34px,4vw,52px);
+
+    font-weight:500;
+
+    line-height:1.2;
+}
+
+.title-decoration{
+    color:#b59a63;
+
+    font-size:25px;
+
+    margin-top:16px;
+}
+
+
+/* =====================================================
+   INTRO
+   ===================================================== */
+
+.seasonal-intro{
+    padding-bottom:90px;
+}
+
+.intro-text{
+    width:min(820px,100%);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:45px;
+}
+
+.intro-text p{
+    color:#626c64;
+
+    font-size:15px;
+
+    line-height:1.95;
+
+    text-align:center;
+}
+
+
+/* =====================================================
+   SELECTOR
+   ===================================================== */
+
+.seasonal-selector{
+    background:#eee9df;
+}
+
+.selector-heading{
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    gap: 22px;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+.selector-heading p{
+    color: #b59a63;
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .20em;
+    margin: 0 0 6px;
+}
+
+.selector-heading h2{
+    color:#173d2b;
+
+    font-family:"Playfair Display",Georgia,serif;
+
+    font-size:clamp(30px,4vw,45px);
+
+    font-weight:500;
+
+    line-height:1.2;
+
+    max-width:700px;
+}
+
+.selector-symbol{
+    width:70px;
+    height:70px;
+
+    flex-shrink:0;
+
+    border:1px solid #b59a6355;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#b59a63;
+
+    font-size:28px;
+}
+
+
+/* =====================================================
+   SEASON CARDS
+   ===================================================== */
+
+.season-cards{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+.season-card{
+    background:#fff;
+
+    box-shadow:
+        0 15px 35px #19342414;
+
+    overflow:hidden;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.season-card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+        0 22px 45px #19342422;
+}
+
+.season-card-art{
+    height:235px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    overflow:hidden;
+}
+
+.season-card-art::before{
+    content:"";
+
+    position:absolute;
+
+    width:190px;
+    height:190px;
+
+    border:1px solid
+        rgba(181,154,99,.25);
+
+    border-radius:50%;
+}
+
+.season-card-art span{
+    position:relative;
+
+    z-index:1;
+
+    font-family:"Playfair Display",Georgia,serif;
+
+    color:#b59a63;
+
+    font-size:70px;
+}
+
+.season-card-art small{
+    position:relative;
+
+    z-index:1;
+
+    margin-top:8px;
+
+    color:#173d2b;
+
+    font-size:9px;
+    font-weight:700;
+
+    letter-spacing:.30em;
+}
+
+.christmas-card .season-card-art{
+    background:
+        linear-gradient(
+            135deg,
+            #e5ddd3,
+            #f7f2e9
+        );
+}
+
+.epitaph-card .season-card-art{
+    background:
+        linear-gradient(
+            135deg,
+            #dfe5df,
+            #f3f4ef
+        );
+}
+
+.easter-card .season-card-art{
+    background:
+        linear-gradient(
+            135deg,
+            #e9e1d7,
+            #faf4e9
+        );
+}
+
+.season-card-content{
+    padding:27px;
+}
+
+.season-card-content .number{
+    color:#b59a63;
+
+    font-size:10px;
+    font-weight:700;
+
+    letter-spacing:.15em;
+}
+
+.season-card-content h3{
+    color:#173d2b;
+
+    font-family:"Playfair Display",Georgia,serif;
+
+    font-size:25px;
+
+    font-weight:500;
+
+    line-height:1.25;
+
+    margin:8px 0 12px;
+}
+
+.season-card-content p{
+    color:#727972;
+
+    font-size:12px;
+
+    line-height:1.75;
+
+    min-height:63px;
+}
+
+.season-link{
+    display:block;
+
+    margin-top:22px;
+
+    color:#173d2b;
+
+    font-size:9px;
+    font-weight:700;
+
+    letter-spacing:.10em;
+}
+
+
+/* =====================================================
+   GALLERY
+   ===================================================== */
+
+.seasonal-gallery{
+    padding-bottom:70px;
+}
+
+.season-block{
+    padding:20px 0 95px;
+
+    margin-bottom:15px;
+
+    scroll-margin-top:115px;
+}
+
+.season-block + .season-block{
+    border-top:1px solid #e2dcd1;
+
+    padding-top:85px;
+}
+
+.season-heading{
+    display:grid;
+
+    grid-template-columns:75px 1fr;
+
+    gap:22px;
+
+    margin-bottom:20px;
+
+    width:100%;
+}
+
+.season-number{
+    width:58px;
+    height:58px;
+
+    border:1px solid #b59a6355;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#b59a63;
+
+    font-family:"Playfair Display",Georgia,serif;
+
+    font-size:18px;
+}
+
+.season-heading p{
+    color:#b59a63;
+
+    font-size:10px;
+    font-weight:700;
+
+    letter-spacing:.20em;
+
+    margin-bottom:6px;
+}
+
+.season-heading h3{
+    color: #173d2b;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0;
+}
+
+.season-description{
+    width:min(760px,100%);
+
+    margin:0 0 30px 97px;
+}
+
+.season-description p{
+    color:#626c64;
+
+    font-size:14px;
+
+    line-height:1.9;
+}
+
+
+/* =====================================================
+   GALLERY GRID
+   ===================================================== */
+
+.season-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+}
+
+.season-photo {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.season-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+/* =====================================================
+   PHOTO PLACEHOLDERS
+   ===================================================== */
+
+.placeholder-christmas{
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(181,154,99,.20),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #ddd3c7,
+            #f4eee5
+        );
+}
+
+.placeholder-epitaph{
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(181,154,99,.12),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #dce2dc,
+            #f1f2ec
+        );
+}
+
+.placeholder-easter{
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(181,154,99,.18),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #e7ddd0,
+            #faf4e9
+        );
+}
+
+
+/* =====================================================
+   PHOTO NOTE
+   ===================================================== */
+
+.photo-note{
+    background:#eee9df;
+}
+
+.photo-note-box{
+    width:min(900px,100%);
+
+    margin:auto;
+
+    padding:42px 50px;
+
+    display:grid;
+
+    grid-template-columns:80px 1fr;
+
+    gap:30px;
+
+    align-items:start;
+
+    background:#f8f5ef;
+
+    border:1px solid #ddd5c8;
+}
+
+.photo-note-icon{
+    width:65px;
+    height:65px;
+
+    border:1px solid #b59a6355;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#b59a63;
+
+    font-size:27px;
+}
+
+.photo-note-box h3{
+    color:#173d2b;
+
+    font-family:"Playfair Display",Georgia,serif;
+
+    font-size:28px;
+
+    font-weight:500;
+
+    line-height:1.3;
+
+    margin-bottom:15px;
+}
+
+.photo-note-box p{
+    color:#626c64;
+
+    font-size:14px;
+
+    line-height:1.85;
+
+    margin-bottom:14px;
+}
+
+.photo-note-box p:last-child{
+    margin-bottom:0;
+}
+
+.photo-note-box .note{
+    color:#7b817a;
+
+    font-size:12px;
+}
+
+
+/* =====================================================
+   CTA
+   ===================================================== */
+
+.cta{
+    min-height:430px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #102f21,
+            #173d2b 55%,
+            #244b38
+        );
+}
+
+.cta::before{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border:1px solid rgba(181,154,99,.18);
+
+    border-radius:50%;
+
+    right:-200px;
+    top:-250px;
+}
+
+.cta::after{
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    border:1px solid rgba(248,245,239,.08);
+
+    border-radius:50%;
+
+    left:-120px;
+    bottom:-150px;
+}
+
+.cta-shade{
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(181,154,99,.08),
+            transparent 50%
+        );
+}
+
+.cta-content{
+    position:relative;
+
+    z-index:2;
+
+    width:min(850px,90%);
+
+    padding:80px 20px;
+
+    text-align:center;
+
+    color:#fff;
+}
+
+.cta-content>p{
+    color:#d4c18e;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    letter-spacing:.28em;
+
+    margin-bottom:14px;
+}
+
+.cta-content h2{
+    font-family:"Playfair Display",Georgia,serif;
+
+    font-size:clamp(35px,5vw,58px);
+
+    font-weight:500;
+
+    line-height:1.2;
+
+    color:#fff;
+
+    margin-bottom:20px;
+}
+
+.cta-message{
+    width:min(580px,100%);
+
+    margin:auto;
+
+    color:#ffffffe0;
+
+    font-size:15px;
+
+    line-height:1.85;
+}
+
+.cta-actions{
+    margin-top:30px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+}
+
+.cta-actions a{
+    min-width:180px;
+
+    padding:14px 22px;
+
+    border:1px solid #d4c18e;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    letter-spacing:.10em;
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+}
+
+.cta-actions a:first-child{
+    background:#b59a63;
+
+    border-color:#b59a63;
+}
+
+.cta-actions a:hover{
+    background:#fff;
+
+    color:#173d2b;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer{
+    background:#132f23;
+
+    color:#fff
+}
+
+.footer-grid{
+    width:min(1180px,90%);
+
+    margin:auto;
+
+    padding:70px 0 55px;
+
+    display:grid;
+
+    grid-template-columns:
+        1.4fr
+        1fr
+        1.2fr
+        1.4fr;
+
+    gap:45px
+}
+
+footer h3,
+footer h4{
+    margin-bottom:17px;
+
+    font-family:"Playfair Display",Georgia,serif;
+
+    font-weight:500
+}
+
+footer p{
+    color:#ffffffad;
+
+    font-size:13px;
+
+    line-height:1.9
+}
+
+.copyright{
+    border-top:1px solid #ffffff1f;
+
+    padding:20px 5%;
+
+    text-align:center;
+
+    color:#ffffff73;
+
+    font-size:11px
+}
+
+
+/* =====================================================
+   DESKTOP LARGE
+   ===================================================== */
+
+@media(min-width:1200px){
+
+    .header{
+        padding-left:6%;
+        padding-right:6%;
+    }
+
+    .header nav{
+        gap:27px;
+    }
+
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media(max-width:1100px){
+
+    .header{
+        padding:0 3%;
+    }
+
+    .logo{
+        min-width:auto;
+    }
+
+    .header nav{
+        gap:15px;
+    }
+
+    .header nav a{
+        font-size:10px;
+    }
+
+    .cta-buttons{
+        gap:6px;
+    }
+
+    .cta-buttons a{
+        padding:10px 12px;
+        font-size:9px;
+    }
+
+    .season-gallery-grid{
+        margin-left:0;
+    }
+
+    .season-description{
+        margin-left:0;
+    }
+
+    .footer-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:40px;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media(max-width:800px){
+
+    /* TOP BAR */
+
+    .topbar{
+        min-height:auto;
+
+        padding:8px 5%;
+
+        flex-direction:column;
+
+        gap:5px;
+
+        text-align:center;
+
+        font-size:10px;
+    }
+
+    .hours{
+        order:2;
+    }
+
+    .social{
+        order:3;
+    }
+
+
+    /* HEADER */
+
+    .header{
+        height:72px;
+
+        padding:0 5%;
+
+        gap:15px;
+    }
+
+    .logo{
+        gap:9px;
+    }
+
+    .flower-logo{
+        font-size:32px;
+    }
+
+    .logo small{
+        font-size:8px;
+    }
+
+    .logo strong{
+        font-size:23px;
+    }
+
+    .menu{
+        display:block;
+
+        margin-left:auto;
+
+        width:45px;
+        height:45px;
+    }
+
+    .cta-buttons{
+        display:none;
+    }
+
+
+    /* MOBILE NAV */
+
+    .header nav{
+        position:absolute;
+
+        top:72px;
+        left:0;
+        right:0;
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:0;
+
+        background:#fff;
+
+        max-height:0;
+
+        overflow:hidden;
+
+        opacity:0;
+
+        box-shadow:
+            0 15px 30px rgba(20,40,25,.12);
+
+        transition:
+            max-height .35s ease,
+            opacity .25s ease;
+    }
+
+    .header nav.open{
+        max-height:calc(100vh - 72px);
+
+        overflow-y:auto;
+
+        opacity:1;
+    }
+
+    .header nav > a,
+    .nav-parent > a{
+        display:block;
+
+        width:100%;
+
+        padding:17px 5% !important;
+
+        border-bottom:1px solid #eee9df;
+
+        font-size:11px;
+    }
+
+    .header nav > a::after,
+    .header nav .nav-parent > a::after
+
+
+    .nav-item{
+        width:100%;
+    }
+
+    .nav-parent{
+        width:100%;
+    }
+
+    .dropdown{
+        position:static;
+
+        width:100%;
+
+        padding:0;
+
+        transform:none;
+
+        border-top:0;
+
+        box-shadow:none;
+
+        background:#f8f5ef;
+
+        opacity:1;
+
+        visibility:visible;
+
+        pointer-events:auto;
+
+        display:none;
+    }
+
+    .dropdown::before{
+        display:none;
+    }
+
+    .nav-item:hover .dropdown{
+        transform:none;
+    }
+
+    .nav-item.has-dropdown:hover .dropdown{
+        display:none;
+    }
+
+    .nav-item.has-dropdown:focus-within .dropdown{
+        display:block;
+    }
+
+    .dropdown a{
+        padding:13px 8% !important;
+
+        font-size:10px !important;
+
+        border-bottom:1px solid #e5dfd5;
+    }
+
+    .dropdown a:hover{
+        padding-left:9% !important;
+    }
+
+
+    /* HERO */
+
+    .seasonal-hero{
+        min-height:510px;
+    }
+
+    .seasonal-hero-content{
+        width:94%;
+
+        padding:70px 10px;
+    }
+
+    .seasonal-hero-content>p{
+        font-size:9px;
+
+        letter-spacing:.20em;
+    }
+
+    .seasonal-hero-content h1{
+        font-size:clamp(40px,12vw,62px);
+    }
+
+    .hero-rule{
+        margin:22px auto;
+    }
+
+    .hero-rule span{
+        width:55px;
+    }
+
+    .hero-intro{
+        font-size:13px;
+
+        line-height:1.8;
+    }
+
+
+    /* GENERAL */
+
+    .section{
+        width:90%;
+
+        padding:70px 0;
+    }
+
+    .section-title{
+        margin-bottom:38px;
+    }
+
+    .section-title>p{
+        font-size:9px;
+
+        letter-spacing:.18em;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+
+
+    /* INTRO */
+
+    .seasonal-intro{
+        padding-bottom:65px;
+    }
+
+    .intro-text{
+        grid-template-columns:1fr;
+
+        gap:25px;
+    }
+
+    .intro-text p{
+        font-size:14px;
+    }
+
+
+    /* SELECTOR */
+
+    .selector-heading{
+        align-items:flex-start;
+
+        margin-bottom:30px;
+    }
+
+    .selector-heading h2{
+        font-size:31px;
+    }
+
+    .selector-symbol{
+        width:55px;
+        height:55px;
+
+        font-size:23px;
+    }
+
+    .season-cards{
+        grid-template-columns:1fr;
+
+        gap:18px;
+    }
+
+    .season-card-art{
+        height:190px;
+    }
+
+    .season-card-content{
+        padding:24px;
+    }
+
+
+    /* GALLERY */
+
+    .seasonal-gallery{
+        padding-bottom:40px;
+    }
+
+    .season-block{
+        padding:10px 0 65px;
+
+        scroll-margin-top:85px;
+    }
+
+    .season-block + .season-block{
+        padding-top:60px;
+    }
+
+    .season-heading{
+        grid-template-columns:55px 1fr;
+
+        gap:15px;
+
+        margin-bottom:18px;
+    }
+
+    .season-number{
+        width:48px;
+        height:48px;
+
+        font-size:15px;
+    }
+
+    .season-heading p{
+        font-size:9px;
+
+        letter-spacing:.13em;
+    }
+
+    .season-heading h3{
+        font-size:27px;
+    }
+
+    .season-description{
+        width:100%;
+
+        margin:0 0 25px;
+    }
+
+    .season-description p{
+        font-size:13px;
+    }
+
+    .season-gallery-grid{
+        margin-left:0;
+
+        grid-template-columns:1fr;
+
+        gap:14px;
+    }
+
+    .season-photo{
+        min-height:260px;
+    }
+
+
+    /* PHOTO NOTE */
+
+    .photo-note-box{
+        grid-template-columns:1fr;
+
+        padding:30px 25px;
+
+        gap:20px;
+    }
+
+    .photo-note-icon{
+        width:55px;
+        height:55px;
+
+        font-size:23px;
+    }
+
+    .photo-note-box h3{
+        font-size:25px;
+    }
+
+    .photo-note-box p{
+        font-size:13px;
+    }
+
+
+    /* CTA */
+
+    .cta{
+        min-height:450px;
+    }
+
+    .cta-content{
+        width:94%;
+
+        padding:70px 15px;
+    }
+
+    .cta-content>p{
+        font-size:9px;
+
+        letter-spacing:.18em;
+    }
+
+    .cta-content h2{
+        font-size:37px;
+    }
+
+    .cta-message{
+        font-size:14px;
+    }
+
+    .cta-actions{
+        flex-direction:column;
+
+        width:100%;
+    }
+
+    .cta-actions a{
+        width:100%;
+
+        max-width:300px;
+    }
+
+
+    /* FOOTER */
+
+    .footer-inner{
+        width:90%;
+
+        padding-top:55px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+
+        gap:35px;
+
+        padding-bottom:40px;
+    }
+
+    .footer-brand h3{
+        font-weight:400;
+    }
+
+    .footer-bottom{
+        padding:18px 0;
+
+        flex-direction:column;
+
+        justify-content:center;
+
+        text-align:center;
+
+        gap:4px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+   ===================================================== */
+
+@media(max-width:480px){
+
+    .seasonal-hero{
+        min-height:470px;
+    }
+
+    .seasonal-hero-content h1{
+        font-size:39px;
+    }
+
+    .hero-intro{
+        font-size:12px;
+    }
+
+    .section{
+        width:92%;
+    }
+
+    .section-title h2{
+        font-size:30px;
+    }
+
+    .selector-heading{
+        gap:15px;
+    }
+
+    .selector-symbol{
+        display:none;
+    }
+
+    .season-card-content h3{
+        font-size:23px;
+    }
+
+    .season-heading{
+        grid-template-columns:1fr;
+    }
+
+    .season-number{
+        margin-bottom:5px;
+    }
+
+    .season-heading h3{
+        font-size:25px;
+    }
+
+    .season-photo{
+        min-height:220px;
+    }
+
+    .photo-note-box{
+        padding:25px 20px;
+    }
+
+    .cta-content h2{
+        font-size:32px;
+    }
+
+    .cta-actions a{
+        max-width:none;
+    }
+
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer{
+    background:#132f23;
+    color:#fff;
+
+    font-family:"DM Sans", Arial, sans-serif;
+}
+
+.footer-grid{
+    width:min(1180px,90%);
+
+    margin:auto;
+
+    padding:70px 0 55px;
+
+    display:grid;
+
+    grid-template-columns:
+        1.4fr
+        1fr
+        1.2fr
+        1.4fr;
+
+    gap:45px;
+}
+
+footer h3,
+footer h4{
+    margin-bottom:17px;
+
+    font-family:"DM Sans", Arial, sans-serif;
+
+    font-weight:700;
+}
+
+footer p{
+    color:#ffffffad;
+
+    font-family:"DM Sans", Arial, sans-serif;
+
+    font-size:13px;
+
+    line-height:1.9;
+}
+
+.footer-links{
+    margin-top:12px;
+
+    font-family:"DM Sans", Arial, sans-serif;
+}
+
+.copyright{
+    border-top:1px solid #ffffff1f;
+
+    padding:20px 5%;
+
+    text-align:center;
+
+    color:#ffffff73;
+
+    font-family:"DM Sans", Arial, sans-serif;
+
+    font-size:11px;
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media(max-width:1000px){
+
+    .header nav{
+        gap:12px;
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery-item:first-child{
+        grid-column:span 2;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media(max-width:800px){
+
+    .footer-grid{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+}
+
+/* =====================================================
+   FOOTER TYPOGRAPHY — NORMAL WEIGHT
+   ===================================================== */
+
+footer h3,
+footer h4,
+footer b{
+    font-weight:400;
+}
+
+
+
+.footer-label{
+    font-weight:400;
+}
+
+.season-gallery-grid .season-photo {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1.9 / 2.6 !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+.season-gallery-grid .season-photo img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 1.9 / 2.6 !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+@media (max-width: 768px) {
+
+    .season-gallery-grid .season-photo {
+        aspect-ratio: 1.9 / 2.6 !important;
+    }
+
+    .season-gallery-grid .season-photo img {
+        aspect-ratio: 1.9 / 2.6 !important;
+    }
+
+}
+
+/* =====================================================
+   ΟΛΕΣ ΟΙ ΚΑΤΗΓΟΡΙΕΣ ΦΩΤΟΓΡΑΦΙΩΝ
+   ΙΔΙΑ ΕΜΦΑΝΙΣΗ ΜΕ ΤΟ GIFTS
+   ===================================================== */
+
+.season-gallery-grid {
+
+    width:100%;
+
+    margin-left:0;
+
+    padding:0;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(8,minmax(0,1fr));
+
+    gap:15px;
+}
+
+
+.season-gallery-grid .season-photo {
+
+    width:100%;
+
+    aspect-ratio:1 / 1;
+
+    height:auto;
+
+    min-height:0;
+
+    margin:0;
+
+    padding:0;
+
+    overflow:hidden;
+
+    border:0;
+
+    background:#f5f1ec;
+}
+
+
+.season-gallery-grid .season-photo img {
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    max-width:none;
+
+    object-fit:cover;
+
+    transition:
+        transform .5s ease;
+}
+
+
+.season-gallery-grid .season-photo:hover img {
+
+    transform:scale(1.04);
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media(max-width:1100px){
+
+    .season-gallery-grid {
+
+        grid-template-columns:
+            repeat(4,minmax(0,1fr));
+
+        gap:14px;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media(max-width:800px){
+
+    .season-gallery-grid {
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+        gap:10px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+   ===================================================== */
+
+@media(max-width:480px){
+
+    .season-gallery-grid {
+
+        grid-template-columns:1fr;
+
+        gap:10px;
+    }
+
+}
+
+/* =====================================================
+   SEASON GALLERY
+   8 PHOTOS — FULL SCREEN WIDTH
+   SLIGHTLY TALLER THAN SQUARE
+   ===================================================== */
+
+.season-gallery-grid {
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding: 0 14px !important;
+
+    display: grid !important;
+
+    grid-template-columns: repeat(8, minmax(0, 1fr)) !important;
+
+    gap: 14px !important;
+}
+
+.season-gallery-grid .season-photo {
+    width: 100% !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    aspect-ratio: 1 / 1.18 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    border: 0 !important;
+
+    background: #f5f1ec;
+}
+
+.season-gallery-grid .season-photo img {
+    width: 100% !important;
+    height: 100% !important;
+
+    max-width: none !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+
+    transition: transform .5s ease;
+}
+
+.season-gallery-grid .season-photo:hover img {
+    transform: scale(1.04);
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 1100px) {
+
+    .season-gallery-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 14px !important;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 800px) {
+
+    .season-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+
+        padding: 0 10px !important;
+    }
+
+    .season-gallery-grid .season-photo {
+        aspect-ratio: 1 / 1.15 !important;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 480px) {
+
+    .season-gallery-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+
+        padding: 0 10px !important;
+    }
+
+}
+
+.season-gallery-grid {
+    width:100vw !important;
+
+    margin-left:calc(50% - 50vw) !important;
+
+    display:grid;
+
+    grid-template-columns:repeat(8, minmax(0, 1fr));
+
+    gap:14px;
+
+    padding:0 14px;
+}
+/*
+
+.season-heading {
+    width:100vw !important;
+    margin-left:calc(50% - 50vw) !important;
+
+    padding-left:14px !important;
+}
+*/
+
+/* =====================================================
+   SEASON HEADING + GALLERY ALIGNMENT
+   ===================================================== */
+
+.season-heading {
+    width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+
+    padding-left: 52px !important;
+    padding-right: 52px !important;
+
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   GALLERY
+   ===================================================== */
+
+.season-gallery-grid {
+    width: 100vw !important;
+
+    margin-left: calc(50% - 50vw) !important;
+
+    padding-left: 52px !important;
+    padding-right: 52px !important;
+
+    box-sizing: border-box;
+}
+
+
