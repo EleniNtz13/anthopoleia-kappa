@@ -1,0 +1,2408 @@
+/* =========================================================
+   CREATIONS PAGE
+   ANTHOPOLEIA KAPPA
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", Arial, sans-serif;
+    color: #263228;
+    background: #f8f5ef;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.topbar {
+    min-height: 42px;
+    padding: 8px 5%;
+    background: #173d2b;
+    color: #f6f2e9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 12px;
+}
+
+.hours {
+    text-align: center;
+    flex: 1;
+}
+
+.topbar i {
+    opacity: .4;
+    margin: 0 10px;
+}
+
+.social {
+    display: flex;
+    gap: 8px;
+}
+
+.social a {
+    width: 27px;
+    height: 27px;
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        background .25s ease,
+        border-color .25s ease;
+}
+
+.social a:hover {
+    background: rgba(255,255,255,.07);
+    border-color: rgba(255,255,255,.6);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+    height: 92px;
+    padding: 0 5%;
+    background: rgba(255,255,255,.97);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 20px rgba(20,40,25,.06);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    color: #173d2b;
+    min-width: 190px;
+}
+
+.flower-logo {
+    color: #b59a63;
+    font-size: 42px;
+}
+
+.logo small {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .24em;
+}
+
+.logo strong {
+    display: block;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 28px;
+}
+
+
+/* =========================================================
+   MAIN NAVIGATION
+   ========================================================= */
+
+.header nav {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    height: 100%;
+}
+
+.header nav > a,
+.header nav .nav-parent > a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+    color: #263228;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    white-space: nowrap;
+    transition: color .25s ease;
+}
+
+
+/* =========================================================
+   ACTIVE / HOVER NAVIGATION
+   ========================================================= */
+
+.header nav > a::after,
+.header nav .nav-parent > a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 31px;
+    height: 2px;
+    background: #b59a63;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .25s ease;
+}
+
+.header nav > a:hover,
+.header nav .nav-parent > a:hover {
+    color: #173d2b;
+}
+
+.header nav > a:hover::after,
+.header nav .nav-parent > a:hover::after,
+.header nav > a.active::after,
+.header nav .nav-parent > a.active::after {
+    transform: scaleX(1);
+}
+
+.header nav .nav-parent > a.active {
+    color: #173d2b;
+}
+
+
+/* =========================================================
+   NAV ITEM
+   ========================================================= */
+
+.nav-item {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-parent {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+
+/* =========================================================
+   DROPDOWN
+   ========================================================= */
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 12px);
+    width: 315px;
+    padding: 0;
+    background: #fff;
+    border-top: 2px solid #b59a63;
+    box-shadow: 0 18px 45px rgba(20,40,25,.16);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 300;
+    transition:
+        opacity .22s ease,
+        transform .22s ease,
+        visibility .22s ease;
+}
+
+@media (min-width: 801px) {
+
+    .nav-item.has-dropdown:hover > .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 0);
+        pointer-events: auto;
+    }
+
+}
+
+.dropdown::before {
+    display: none;
+}
+
+.dropdown a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 13px 25px !important;
+    color: #314238;
+    font-size: 10px !important;
+    font-weight: 700;
+    letter-spacing: .07em;
+    white-space: normal;
+    border-bottom: 1px solid #eee9df;
+    transition:
+        background .2s ease,
+        color .2s ease,
+        padding-left .2s ease;
+}
+
+.dropdown a:last-child {
+    border-bottom: 0;
+}
+
+.dropdown a:hover {
+    background: #f8f5ef;
+    color: #173d2b !important;
+    padding-left: 31px !important;
+}
+
+.dropdown-toggle {
+    display: none !important;
+}
+
+
+/* =========================================================
+   HEADER CTA BUTTONS
+   ========================================================= */
+
+.cta-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+}
+
+.cta-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 12px 15px;
+    white-space: nowrap;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    transition:
+        background .25s ease,
+        transform .25s ease;
+}
+
+.cta-primary {
+    background: #173d2b;
+    color: #fff;
+}
+
+.cta-primary:hover {
+    background: #28583e;
+    transform: translateY(-1px);
+}
+
+.cta-secondary {
+    background: #b59a63;
+    color: #fff;
+}
+
+.cta-secondary:hover {
+    background: #9f8652;
+    transform: translateY(-1px);
+}
+
+.cta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+   ========================================================= */
+
+.section {
+    width: min(1180px,90%);
+    margin: auto;
+    padding: 100px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title > p {
+    color: #b59a63;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .25em;
+    margin-bottom: 11px;
+}
+
+.section-title h2 {
+    color: #173d2b;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(34px,4vw,52px);
+    font-weight: 500;
+}
+
+.title-decoration {
+    color: #b59a63;
+    font-size: 25px;
+    margin-top: 16px;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.intro {
+    padding-bottom: 85px;
+}
+
+.intro-text {
+    width: min(820px,100%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+}
+
+.intro-text p {
+    color: #626c64;
+    font-size: 15px;
+    line-height: 1.95;
+    text-align: center;
+}
+
+
+/* =========================================================
+   SERVICES LINK
+   ========================================================= */
+
+.services-link {
+    background: #f8f5ef;
+    border-top: 1px solid #e5dfd4;
+    border-bottom: 1px solid #e5dfd4;
+}
+
+.services-link-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 60px;
+    width: min(1050px,100%);
+    margin: auto;
+}
+
+.services-link-content h2 {
+    color: #173d2b;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(30px,4vw,46px);
+    font-weight: 500;
+    line-height: 1.2;
+    max-width: 650px;
+}
+
+.services-link-content > div > p:not(.kicker) {
+    color: #626c64;
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 620px;
+    margin-top: 18px;
+}
+
+.services-link .kicker {
+    color: #b59a63;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .25em;
+    margin-bottom: 12px;
+}
+
+.services-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    min-width: 230px;
+    padding: 16px 22px;
+    background: #173d2b;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .09em;
+    transition:
+        background .25s ease,
+        transform .25s ease;
+}
+
+.services-button span {
+    color: #d4c18e;
+    font-size: 17px;
+}
+
+.services-button:hover {
+    background: #28583e;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   CATEGORIES
+   ========================================================= */
+
+.categories {
+    background: #eee9df;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.category-card {
+    background: #fff;
+    box-shadow: 0 15px 35px rgba(25,52,36,.08);
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    overflow: hidden;
+}
+
+.category-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 45px rgba(25,52,36,.13);
+}
+
+.category-image {
+    height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 55px;
+    color: #b59a63;
+}
+
+.placeholder-bouquets {
+    background:
+        linear-gradient(
+            135deg,
+            #e8ded1,
+            #f8f2e9
+        );
+}
+
+.placeholder-arrangements {
+    background:
+        linear-gradient(
+            135deg,
+            #e1e7df,
+            #f5f5ef
+        );
+}
+
+.placeholder-plants {
+    background:
+        linear-gradient(
+            135deg,
+            #dce5dc,
+            #f2f4ed
+        );
+}
+
+.placeholder-special {
+    background:
+        linear-gradient(
+            135deg,
+            #e7ded5,
+            #f6f0e9
+        );
+}
+
+.category-content {
+    padding: 25px;
+}
+
+.category-content .number {
+    color: #b59a63;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .15em;
+}
+
+.category-content p {
+    color: #727972;
+    font-size: 12px;
+    line-height: 1.75;
+    min-height: 63px;
+}
+
+.category-content p {
+    color: #727972;
+    font-size: 12px;
+    line-height: 1.7;
+    min-height: 42px;
+}
+
+.view {
+    display: block;
+    margin-top: 22px;
+    color: #173d2b;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .10em;
+}
+
+/* =========================================================
+   GALLERY
+   8 ΦΩΤΟΓΡΑΦΙΕΣ ΑΝΑ ΣΕΙΡΑ
+   ========================================================= */
+/* =====================================================
+   GALLERY
+   ===================================================== */
+
+    .creations-gallery{
+        padding-bottom:70px;
+    }
+
+    .creation-block{
+        padding:20px 0 95px;
+
+        margin-bottom:15px;
+
+        scroll-margin-top:115px;
+    }
+
+    .creation-block + .creation-block{
+        border-top:1px solid #e2dcd1;
+
+        padding-top:85px;
+    }
+
+    .creation-heading{
+        display:grid;
+
+        grid-template-columns:75px 1fr;
+
+        gap:22px;
+
+        align-items:start;
+
+        margin-bottom:20px;
+    }
+
+    .creation-number{
+        width:58px;
+        height:58px;
+
+        border:1px solid #b59a6355;
+
+        border-radius:50%;
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        color:#b59a63;
+
+        font-family:"Playfair Display",Georgia,serif;
+
+        font-size:18px;
+    }
+
+    .creation-heading p{
+        color:#b59a63;
+
+        font-size:10px;
+        font-weight:700;
+
+        letter-spacing:.20em;
+
+        margin-bottom:6px;
+    }
+
+    .creation-heading h3{
+        color:#173d2b;
+
+        font-family:"Playfair Display",Georgia,serif;
+
+        font-size:32px;
+
+        font-weight:500;
+
+        line-height:1.25;
+    }
+
+    .creation-description{
+        width:min(760px,100%);
+
+        margin:0 0 30px 97px;
+    }
+
+    .creation-description p{
+        color:#626c64;
+
+        font-size:14px;
+
+        line-height:1.9;
+    }
+
+
+/* =========================================================
+   GALLERY GRID
+   8 COLUMNS = 8 ΦΩΤΟΓΡΑΦΙΕΣ ΣΤΗΝ ΙΔΙΑ ΣΕΙΡΑ
+   ========================================================= */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+}
+
+
+/* =========================================================
+   GALLERY ITEM
+   ========================================================= */
+
+.gallery-item {
+    width: 100%;
+    height: 190px;
+    min-height: 190px;
+    position: relative;
+    overflow: hidden;
+    background: #e8e1d7;
+}
+
+
+/* =========================================================
+   REAL GALLERY IMAGES
+   ========================================================= */
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+}
+
+
+/* =========================================================
+   IMAGE PLACEHOLDER
+   ========================================================= */
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    color: #7c827c;
+    font-size: 10px;
+    letter-spacing: .05em;
+    border: 1px solid #ddd5c8;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eee8de,
+            #faf8f3
+        );
+}
+
+.image-placeholder::before {
+    content: "❀";
+    position: absolute;
+    color: #b59a63;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 45px;
+    opacity: .15;
+}
+
+.image-placeholder span {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   PHOTO NOTE
+   ========================================================= */
+
+.photo-note {
+    background: #173d2b;
+    color: #fff;
+}
+
+.photo-note .section {
+    padding: 80px 0;
+}
+
+.photo-note-box {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 35px;
+    align-items: center;
+    width: min(950px,100%);
+    margin: auto;
+}
+
+.photo-note-icon {
+    width: 90px;
+    height: 90px;
+    border: 1px solid rgba(212,193,142,.40);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d4c18e;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 45px;
+}
+
+.photo-note h3 {
+    font-family: "Playfair Display", Georgia, serif;
+    color: #f0dfb1;
+    font-size: 27px;
+    font-weight: 500;
+    line-height: 1.35;
+    margin-bottom: 14px;
+}
+
+.photo-note p {
+    color: rgba(255,255,255,.78);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.photo-note .note {
+    margin-top: 16px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(212,193,142,.20);
+    color: rgba(255,255,255,.62);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.cta {
+    min-height: 480px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #102f21,
+            #173d2b 55%,
+            #214b37
+        );
+}
+
+.cta::before {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border: 1px solid rgba(181,154,99,.18);
+    border-radius: 50%;
+    right: -170px;
+    top: -190px;
+}
+
+.cta::after {
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border: 1px solid rgba(248,245,239,.08);
+    border-radius: 50%;
+    left: -110px;
+    bottom: -130px;
+}
+
+.cta-shade {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(181,154,99,.12),
+            transparent 38%
+        );
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+    width: min(800px,90%);
+    text-align: center;
+    color: #fff;
+}
+
+.cta-content > p {
+    color: #d4c18e;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .25em;
+    margin-bottom: 13px;
+}
+
+.cta-content h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(38px,5vw,58px);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.cta-message {
+    margin-top: 15px;
+    color: rgba(255,255,255,.81);
+    font-size: 15px;
+}
+
+.cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.cta-actions a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    min-width: 180px;
+    padding: 12px 20px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    transition:
+        background .25s ease,
+        transform .25s ease;
+}
+
+.cta-action-primary {
+    background: #173d2b;
+    border: 1px solid rgba(255,255,255,.10);
+}
+
+.cta-action-primary:hover {
+    background: #28583e;
+    transform: translateY(-1px);
+}
+
+.cta-action-secondary {
+    background: #b59a63;
+    border: 1px solid #b59a63;
+}
+
+.cta-action-secondary:hover {
+    background: #9f8652;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    background: #132f23;
+    color: #fff;
+}
+
+.footer-grid {
+    width: min(1180px,90%);
+    margin: auto;
+    padding: 70px 0 55px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.2fr 1.4fr;
+    gap: 45px;
+}
+
+footer h3,
+footer h4 {
+    margin-bottom: 17px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 400;
+}
+
+footer p {
+    color: rgba(255,255,255,.68);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+footer a {
+    transition: color .2s ease;
+}
+
+footer a:hover {
+    color: #d4c18e;
+}
+
+.footer-links {
+    margin-top: 12px;
+}
+
+.copyright {
+    border-top: 1px solid rgba(255,255,255,.12);
+    padding: 20px 5%;
+    text-align: center;
+    color: rgba(255,255,255,.45);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .cta-buttons {
+        gap: 6px;
+    }
+
+    .cta-buttons a {
+        padding: 11px 10px;
+        font-size: 9px;
+    }
+
+    .header nav {
+        gap: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL DESKTOP / TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .header nav {
+        gap: 12px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    /*
+       8 ΦΩΤΟΓΡΑΦΙΕΣ:
+       σε μικρότερο desktop/tablet γίνονται 4 ανά σειρά
+    */
+    .gallery-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .gallery-item {
+        height: 220px;
+        min-height: 220px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+
+    /* =====================================================
+       TOP BAR
+       ===================================================== */
+
+    .topbar {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    .header {
+        height: 72px;
+        padding: 0 5%;
+    }
+
+    .logo {
+        min-width: auto;
+    }
+
+    .logo strong {
+        font-size: 24px;
+    }
+
+    .flower-logo {
+        font-size: 35px;
+    }
+
+
+    /* =====================================================
+       MOBILE MENU
+       ===================================================== */
+
+    .menu {
+        display: block;
+        border: 0;
+        background: none;
+        font-size: 27px;
+        color: #173d2b;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+
+    /* =====================================================
+       MOBILE NAV
+       ===================================================== */
+
+    .header nav {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 72px;
+        height: auto;
+        background: #fff;
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 10px 20px rgba(20,40,25,.07);
+    }
+
+    .header nav.open {
+        display: flex;
+    }
+
+    .header nav > a,
+    .header nav .nav-parent > a {
+        display: flex;
+        width: 100%;
+        min-height: 45px;
+        height: auto;
+        padding: 13px 5px;
+        border-bottom: 1px solid #eee;
+        align-items: center;
+    }
+
+    .header nav > a::after,
+    .header nav .nav-parent > a::after {
+        display: none;
+    }
+
+
+    /* =====================================================
+       MOBILE NAV ITEMS
+       ===================================================== */
+
+    .header nav .nav-item {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .header nav .nav-parent {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+
+    /* =====================================================
+       MOBILE DROPDOWNS
+       ===================================================== */
+
+    .header nav .dropdown {
+        position: static;
+        width: 100%;
+        padding: 0;
+        transform: none;
+        background: #f8f5ef;
+        border-top: 0;
+        box-shadow: none;
+
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
+        overflow: hidden;
+        pointer-events: none;
+
+        transition:
+            max-height .35s ease,
+            opacity .25s ease,
+            visibility .25s ease;
+    }
+
+    .header nav .dropdown::before {
+        display: none;
+    }
+
+    .header nav .nav-item.dropdown-open .dropdown {
+        opacity: 1;
+        visibility: visible;
+        max-height: 600px;
+        pointer-events: auto;
+    }
+
+    .header nav .dropdown a {
+        display: flex;
+        width: 100%;
+        min-height: 42px;
+        padding: 12px 18px 12px 25px !important;
+        border-bottom: 1px solid #e4ded4;
+        color: #596158;
+        font-size: 9px !important;
+        letter-spacing: .08em;
+    }
+
+    .header nav .dropdown a:hover {
+        padding-left: 30px !important;
+        background: #eee9df;
+        color: #173d2b !important;
+    }
+
+    .dropdown-toggle {
+        display: none !important;
+    }
+
+
+    /* =====================================================
+       HEADER CTA
+       ===================================================== */
+
+    .cta-buttons {
+        display: none;
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .creations-hero {
+        min-height: 540px;
+    }
+
+    .creations-hero-content {
+        padding: 70px 15px;
+    }
+
+    .creations-eyebrow {
+        font-size: 10px;
+        letter-spacing: .22em;
+    }
+
+    .creations-hero-content h1 {
+        font-size: 45px;
+    }
+
+    .hero-intro {
+        font-size: 14px;
+    }
+
+
+    /* =====================================================
+       GENERAL
+       ===================================================== */
+
+    .section {
+        padding: 75px 0;
+    }
+
+
+    /* =====================================================
+       INTRO
+       ===================================================== */
+
+    .intro-text {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+
+    /* =====================================================
+       SERVICES LINK
+       ===================================================== */
+
+    .services-link .section {
+        padding: 70px 0;
+    }
+
+    .services-link-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .services-link-content > div > p:not(.kicker) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .services-button {
+        width: min(300px,100%);
+        margin: auto;
+    }
+
+
+    /* =====================================================
+       CATEGORIES
+       ===================================================== */
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-image {
+        height: 220px;
+    }
+
+
+    /* =====================================================
+       GALLERY
+       2 ΦΩΤΟΓΡΑΦΙΕΣ ΑΝΑ ΣΕΙΡΑ ΣΕ ΚΙΝΗΤΟ
+       ===================================================== */
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .gallery-item {
+        height: 250px;
+        min-height: 250px;
+    }
+
+    .category-heading {
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    gap: 22px;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+    .category-heading h3 {
+        font-size: 25px;
+    }
+
+
+    /* =====================================================
+       PHOTO NOTE
+       ===================================================== */
+
+    .photo-note-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .photo-note-icon {
+        margin: auto;
+    }
+
+    .photo-note h3 {
+        font-size: 24px;
+    }
+
+
+    /* =====================================================
+       CTA
+       ===================================================== */
+
+    .cta {
+        min-height: 450px;
+    }
+
+    .cta-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-actions a {
+        width: min(300px,90%);
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+    .creations-hero-content h1 {
+        font-size: 39px;
+    }
+
+    .hero-rule span {
+        width: 65px;
+    }
+
+    .category-heading h3 {
+        font-size: 22px;
+    }
+
+    .section-title h2 {
+        font-size: 34px;
+    }
+
+
+    /* =====================================================
+       GALLERY
+       1 ΦΩΤΟΓΡΑΦΙΑ ΑΝΑ ΣΕΙΡΑ ΣΕ ΠΟΛΥ ΜΙΚΡΗ ΟΘΟΝΗ
+       ===================================================== */
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item {
+        height: 300px;
+        min-height: 300px;
+    }
+
+}
+
+
+/* =========================================================
+   SMOOTH SCROLL ΓΙΑ ΤΙΣ ΚΑΤΗΓΟΡΙΕΣ
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.gallery-category {
+    scroll-margin-top: 120px;
+}
+
+
+/* =====================================================
+   HERO COLLAGE
+   ===================================================== */
+
+.creations-hero {
+    position: relative;
+    min-height: 680px;
+    overflow: hidden;
+    isolation: isolate;
+    background: #241b18;
+}
+
+
+/* =====================================================
+   COLLAGE CONTAINER
+   ===================================================== */
+
+.hero-collage {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+}
+
+
+/* =====================================================
+   COLLAGE PHOTOS
+   ===================================================== */
+
+.collage-photo {
+    position: absolute;
+    overflow: hidden;
+
+    background: #3a2b26;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.28);
+
+    border: 5px solid rgba(255, 248, 240, 0.92);
+}
+
+
+.collage-photo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.8s ease;
+}
+
+
+/* subtle zoom */
+
+.creations-hero:hover .collage-photo img {
+    transform: scale(1.04);
+}
+
+
+/* =====================================================
+   PHOTO 01
+   ===================================================== */
+
+.collage-photo-1 {
+
+    width: 31%;
+    height: 62%;
+
+    left: -2%;
+    top: 7%;
+
+    transform: rotate(-5deg);
+
+}
+
+
+/* =====================================================
+   PHOTO 02
+   ===================================================== */
+
+.collage-photo-2 {
+
+    width: 28%;
+    height: 45%;
+
+    left: 19%;
+    top: -5%;
+
+    transform: rotate(3deg);
+
+}
+
+
+/* =====================================================
+   PHOTO 03
+   ===================================================== */
+
+.collage-photo-3 {
+
+    width: 30%;
+    height: 55%;
+
+    left: 38%;
+    top: 8%;
+
+    transform: rotate(-2deg);
+
+}
+
+
+/* =====================================================
+   PHOTO 04
+   ===================================================== */
+
+.collage-photo-4 {
+
+    width: 29%;
+    height: 50%;
+
+    right: 15%;
+    top: -3%;
+
+    transform: rotate(5deg);
+
+}
+
+
+/* =====================================================
+   PHOTO 05
+   ===================================================== */
+
+.collage-photo-5 {
+
+    width: 28%;
+    height: 57%;
+
+    right: -3%;
+    top: 9%;
+
+    transform: rotate(-4deg);
+
+}
+
+
+/* =====================================================
+   PHOTO 06
+   ===================================================== */
+
+.collage-photo-6 {
+
+    width: 35%;
+    height: 48%;
+
+    left: 33%;
+    bottom: -13%;
+
+    transform: rotate(4deg);
+
+}
+
+
+/* =====================================================
+   HERO SHADE
+   ===================================================== */
+
+.creations-hero-shade {
+
+    position: absolute;
+    inset: 0;
+
+    z-index: -2;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(35, 25, 22, 0.78) 0%,
+            rgba(35, 25, 22, 0.52) 35%,
+            rgba(35, 25, 22, 0.48) 65%,
+            rgba(35, 25, 22, 0.72) 100%
+        );
+
+}
+
+
+/* =====================================================
+   EXTRA SOFT OVERLAY
+   ===================================================== */
+
+.creations-hero::after {
+
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: -1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20, 14, 12, 0.20),
+            transparent 35%,
+            rgba(20, 14, 12, 0.45)
+        );
+
+}
+
+
+/* =====================================================
+   HERO CONTENT
+   ===================================================== */
+
+.creations-hero-content {
+
+    position: relative;
+    z-index: 2;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    padding:
+        150px 30px
+        140px;
+
+    text-align: center;
+
+    color: #fff;
+
+    text-shadow:
+        0 2px 18px rgba(0, 0, 0, 0.45);
+
+}
+
+
+/* =====================================================
+   EYEBROW
+   ===================================================== */
+
+.creations-eyebrow {
+
+    margin: 0 0 18px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.24em;
+
+    color: #f5ddd0;
+
+}
+
+
+/* =====================================================
+   RULE
+   ===================================================== */
+
+.hero-rule {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 0 auto 25px;
+
+    color: #e7bfa9;
+
+}
+
+
+.hero-rule span {
+
+    width: 65px;
+    height: 1px;
+
+    background:
+        rgba(255, 255, 255, 0.65);
+
+}
+
+
+/* =====================================================
+   HERO TITLE
+   ===================================================== */
+
+.creations-hero-content h1 {
+
+    margin: 0;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(42px, 6vw, 76px);
+
+    line-height: 1.04;
+
+    font-weight: 500;
+
+    letter-spacing: -0.025em;
+
+}
+
+
+.creations-hero-content h1 em {
+
+    display: block;
+
+    color: #f0cdbb;
+
+    font-weight: 500;
+
+}
+
+
+/* =====================================================
+   HERO INTRO
+   ===================================================== */
+
+.creations-hero-content .hero-intro {
+
+    max-width: 560px;
+
+    margin:
+        28px auto 0;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color:
+        rgba(255, 255, 255, 0.92);
+
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .creations-hero {
+        min-height: 620px;
+    }
+
+    .collage-photo-1 {
+        width: 38%;
+        height: 50%;
+        left: -8%;
+        top: 8%;
+    }
+
+    .collage-photo-2 {
+        width: 34%;
+        height: 38%;
+        left: 18%;
+        top: -4%;
+    }
+
+    .collage-photo-3 {
+        width: 36%;
+        height: 45%;
+        left: 38%;
+        top: 5%;
+    }
+
+    .collage-photo-4 {
+        width: 35%;
+        height: 42%;
+        right: 12%;
+        top: -4%;
+    }
+
+    .collage-photo-5 {
+        width: 34%;
+        height: 47%;
+        right: -8%;
+        top: 8%;
+    }
+
+    .collage-photo-6 {
+        width: 42%;
+        height: 40%;
+        left: 28%;
+        bottom: -10%;
+    }
+
+    .creations-hero-content {
+        padding:
+            140px 25px
+            120px;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    .creations-hero {
+
+        min-height: 620px;
+
+    }
+
+
+    .hero-collage {
+
+        transform:
+            scale(1.18);
+
+        transform-origin:
+            center;
+
+    }
+
+
+    .collage-photo {
+
+        border-width: 3px;
+
+        box-shadow:
+            0 12px 30px
+            rgba(0, 0, 0, 0.28);
+
+    }
+
+
+    .collage-photo-1 {
+
+        width: 48%;
+        height: 42%;
+
+        left: -15%;
+        top: 7%;
+
+        transform:
+            rotate(-7deg);
+
+    }
+
+
+    .collage-photo-2 {
+
+        width: 46%;
+        height: 34%;
+
+        left: 19%;
+        top: -5%;
+
+        transform:
+            rotate(4deg);
+
+    }
+
+
+    .collage-photo-3 {
+
+        width: 46%;
+        height: 39%;
+
+        left: 48%;
+        top: 4%;
+
+        transform:
+            rotate(-3deg);
+
+    }
+
+
+    .collage-photo-4 {
+
+        width: 46%;
+        height: 37%;
+
+        right: -13%;
+        top: 22%;
+
+        transform:
+            rotate(6deg);
+
+    }
+
+
+    .collage-photo-5 {
+
+        width: 46%;
+        height: 40%;
+
+        left: -8%;
+        bottom: -4%;
+
+        transform:
+            rotate(-4deg);
+
+    }
+
+
+    .collage-photo-6 {
+
+        width: 48%;
+        height: 37%;
+
+        left: 34%;
+        bottom: -9%;
+
+        transform:
+            rotate(5deg);
+
+    }
+
+
+    .creations-hero-shade {
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(25, 18, 16, 0.78),
+                rgba(25, 18, 16, 0.62)
+            );
+
+    }
+
+
+    .creations-hero-content {
+
+        padding:
+            145px 22px
+            125px;
+
+    }
+
+
+    .creations-eyebrow {
+
+        font-size: 10px;
+
+        letter-spacing:
+            0.18em;
+
+    }
+
+
+    .creations-hero-content h1 {
+
+        font-size:
+            clamp(40px, 12vw, 58px);
+
+        line-height:
+            1.06;
+
+    }
+
+
+    .creations-hero-content .hero-intro {
+
+        font-size: 14px;
+
+        line-height: 1.7;
+
+        max-width: 340px;
+
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .collage-photo img {
+
+        transition: none;
+
+    }
+
+    .creations-hero:hover
+    .collage-photo img {
+
+        transform: none;
+
+    }
+
+}
+
+/* =====================================================
+   CATEGORY CARD IMAGES
+   ===================================================== */
+
+.category-image {
+
+    position: relative;
+
+    width: 100%;
+    height: 280px;
+
+    overflow: hidden;
+
+    background: #eee7e1;
+
+}
+
+
+/* IMAGE */
+
+.category-image img {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform 0.7s ease;
+
+}
+
+
+/* HOVER ZOOM */
+
+.category-card:hover .category-image img {
+
+    transform: scale(1.06);
+
+}
+
+
+/* =====================================================
+   SUBTLE IMAGE OVERLAY
+   ===================================================== */
+
+.category-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.02) 0%,
+            rgba(0, 0, 0, 0.12) 100%
+        );
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    .category-image {
+
+        height: 240px;
+
+    }
+
+}
+
+#religious-festivals {
+    margin-top: 80px;
+}
+
+#icons {
+    margin-top: 80px;
+}
+
+/* =========================================================
+   CREATIONS — CATEGORY TITLES / NUMBERS
+   BASED ON SEASONAL.CSS
+   ========================================================= */
+
+
+/* =========================================================
+   1. CATEGORY CARDS — TOP CATEGORIES
+   ========================================================= */
+
+.category-card .category-content > .number {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+
+    border: 1px solid #b59a63;
+    border-radius: 50%;
+    box-sizing: border-box;
+
+    color: #b59a63;
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .15em;
+    line-height: 1;
+}
+
+
+/* TITLE — ίδιο ύφος με seasonal.css */
+
+.category-card .category-content > h3 {
+    margin: 8px 0 12px;
+
+    color: #173d2b;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0;
+}
+
+
+/* DESCRIPTION — seasonal.css */
+
+.category-card .category-content > p {
+    margin: 0;
+
+    color: #727972;
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.75;
+
+    min-height: 63px;
+}
+
+
+/* LINK — seasonal.css */
+
+.category-card .category-content > .view {
+    display: block;
+
+    margin-top: 22px;
+
+    color: #173d2b;
+    font-family: "DM Sans", sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .10em;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   2. GALLERY CATEGORY HEADINGS
+   ========================================================= */
+
+.gallery-category .category-heading,
+.gallery-section > .category-heading {
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    gap: 20px;
+
+    align-items: start;
+
+    margin-bottom: 22px;
+}
+
+
+/* CIRCLE AROUND NUMBER */
+
+.gallery-category .category-heading > span,
+.gallery-section > .category-heading > span {
+    width: 58px;
+    height: 58px;
+    border: 1px solid #b59a6355;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b59a63;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 18px;
+}
+
+
+/* SMALL CATEGORY LABEL
+   π.χ. ΑΝΘΟΔΕΣΜΕΣ */
+
+.gallery-category .category-heading p,
+.gallery-section > .category-heading p {
+    color: #b59a63;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .20em;
+    margin-bottom: 6px;
+}
+
+
+/* MAIN GALLERY TITLE
+   ίδιο Playfair / μέγεθος με seasonal.css */
+
+.gallery-category .category-heading h3,
+.gallery-section > .category-heading h3 {
+    color: #173d2b;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+
+/* SPACE BETWEEN GALLERY CATEGORIES */
+
+.gallery-category {
+    margin-bottom: 80px;
+}
+
+
+/* =========================================================
+   3. RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .category-card .category-content {
+        padding: 24px;
+    }
+
+    .category-card .category-content > .number {
+        width: 40px;
+        height: 40px;
+    }
+
+    .category-card .category-content > h3 {
+        margin: 8px 0 12px;
+        font-size: 25px;
+    }
+
+
+    .gallery-category .category-heading,
+    .gallery-section > .category-heading {
+        grid-template-columns: 48px 1fr;
+        gap: 16px;
+
+        margin-bottom: 20px;
+    }
+
+    .gallery-category .category-heading > span,
+    .gallery-section > .category-heading > span {
+        width: 42px;
+        height: 42px;
+    }
+
+    .gallery-category .category-heading h3,
+    .gallery-section > .category-heading h3 {
+        font-size: 25px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .category-card .category-content > h3 {
+        font-size: 24px;
+    }
+
+    .gallery-category .category-heading,
+    .gallery-section > .category-heading {
+        grid-template-columns: 44px 1fr;
+        gap: 14px;
+    }
+
+    .gallery-category .category-heading > span,
+    .gallery-section > .category-heading > span {
+        width: 40px;
+        height: 40px;
+    }
+
+    .gallery-category .category-heading h3,
+    .gallery-section > .category-heading h3 {
+        font-size: 24px;
+    }
+}
+
+/* =========================================================
+   GALLERY — FULL SCREEN WIDTH
+   ========================================================= */
+
+.gallery-section.section {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 3vw;
+    padding-right: 3vw;
+}
+
+
+/* =========================================================
+   CATEGORY HEADING
+   ========================================================= */
+
+.gallery-section .category-heading {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+/* =========================================================
+   GALLERY — 8 PHOTOS FULL WIDTH
+   ========================================================= */
+
+.gallery-section .gallery-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 14px;
+}
+
+
+/* =========================================================
+   PHOTOS
+   ========================================================= */
+
+.gallery-section .gallery-item {
+    width: 100%;
+    height: 250px;
+    min-height: 250px;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.gallery-section .gallery-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
