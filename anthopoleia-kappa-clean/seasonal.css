@@ -3226,3 +3226,84 @@ footer b{
 }
 
 
+/* =====================================================
+   MOBILE MENU — ΕΝΙΑΙΑ ΚΕΝΤΡΑΡΙΣΜΕΝΗ ΕΜΦΑΝΙΣΗ
+   ΙΣΧΥΕΙ ΣΕ ΟΛΕΣ ΤΙΣ ΣΕΛΙΔΕΣ
+   ===================================================== */
+
+@media (max-width: 800px) {
+
+    /* Το menu παραμένει κανονικά κάτω από το header */
+    .header nav.open {
+        left: 0;
+        right: 0;
+        width: 100%;
+        transform: none;
+
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Όλα τα βασικά links */
+    .header nav.open > a {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+    }
+
+    /* Κατηγορίες με υποκατηγορίες */
+    .header nav.open .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .header nav.open .nav-parent {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+    }
+
+    .header nav.open .nav-parent > a {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+    }
+
+    /* Υποκατηγορίες */
+    .header nav.open .dropdown {
+        width: 100%;
+        text-align: center;
+    }
+
+    .header nav.open .dropdown a {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+    }
+
+    /* Αφαιρούμε την αριστερή μετατόπιση στο hover */
+    .header nav.open .dropdown a:hover {
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+    }
+
+}
