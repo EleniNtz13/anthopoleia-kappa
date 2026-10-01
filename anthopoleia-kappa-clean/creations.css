@@ -2405,4 +2405,17 @@ html {
     object-fit: cover;
 }
 
+@media (max-width: 767px) {
+    .category {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .category img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+}
 
