@@ -1960,3 +1960,11 @@ body {
     }
 
 }
+
+@media (max-width: 800px) {
+
+    .season .card .placeholder {
+        border-bottom: 2px solid #ffffff;
+    }
+
+}
