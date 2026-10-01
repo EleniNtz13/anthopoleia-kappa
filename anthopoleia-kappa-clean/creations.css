@@ -2469,3 +2469,61 @@ html {
         object-fit: cover;
     }
 }
+
+/* =========================================================
+   MOBILE GALLERY
+   2 ΤΕΤΡΑΓΩΝΕΣ ΦΩΤΟΓΡΑΦΙΕΣ ΑΝΑ ΣΕΙΡΑ
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .gallery-section .gallery-grid,
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        width: 100%;
+    }
+
+    .gallery-section .gallery-item,
+    .gallery-item {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        height: auto;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .gallery-section .gallery-item img,
+    .gallery-item img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ΠΑΡΑΜΕΝΟΥΝ 2 ΦΩΤΟΓΡΑΦΙΕΣ ΑΝΑ ΣΕΙΡΑ
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+    .gallery-section .gallery-grid,
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .gallery-section .gallery-item,
+    .gallery-item {
+        aspect-ratio: 1 / 1;
+        height: auto;
+        min-height: 0;
+    }
+
+}
+
