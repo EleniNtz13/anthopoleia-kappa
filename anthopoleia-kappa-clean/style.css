@@ -1939,3 +1939,24 @@ body {
 
     font-weight: 400;
 }
+
+/* =====================================================
+   MOBILE — ΕΠΟΧΙΑΚΕΣ ΔΗΜΙΟΥΡΓΙΕΣ
+   Οι 3 κατηγορίες σε μία κάθετη στήλη
+   ===================================================== */
+
+@media (max-width: 800px) {
+
+    .season .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .season .card {
+        width: 100%;
+        display: block;
+    }
+
+}
