@@ -1390,40 +1390,6 @@ footer a:hover {
    SMALL MOBILE
    ========================================================= */
 
-@media (max-width: 450px) {
-
-    .creations-hero-content h1 {
-        font-size: 39px;
-    }
-
-    .hero-rule span {
-        width: 65px;
-    }
-
-    .category-heading h3 {
-        font-size: 22px;
-    }
-
-    .section-title h2 {
-        font-size: 34px;
-    }
-
-
-    /* =====================================================
-       GALLERY
-       1 ΦΩΤΟΓΡΑΦΙΑ ΑΝΑ ΣΕΙΡΑ ΣΕ ΠΟΛΥ ΜΙΚΡΗ ΟΘΟΝΗ
-       ===================================================== */
-
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-item {
-        height: 300px;
-        min-height: 300px;
-    }
-
-}
 
 
 /* =========================================================
@@ -2405,19 +2371,6 @@ html {
     object-fit: cover;
 }
 
-@media (max-width: 767px) {
-    .category {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .category img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-}
 
 @media (max-width: 800px) {
 
@@ -2526,4 +2479,57 @@ html {
     }
 
 }
+
+/* =========================================================
+   MOBILE GALLERY
+   2 ΦΩΤΟΓΡΑΦΙΕΣ ΑΝΑ ΣΕΙΡΑ
+   ΤΕΤΡΑΓΩΝΕΣ ΦΩΤΟΓΡΑΦΙΕΣ
+   ========================================================= */
+
+@media screen and (max-width: 800px) {
+
+    .gallery-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    .gallery-item {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        aspect-ratio: 1 / 1 !important;
+        overflow: hidden !important;
+    }
+
+    .gallery-item img {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ΠΑΛΙ 2 ΦΩΤΟΓΡΑΦΙΕΣ ΑΝΑ ΣΕΙΡΑ
+   ========================================================= */
+
+@media screen and (max-width: 450px) {
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .gallery-item {
+        aspect-ratio: 1 / 1 !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+}
+
 
