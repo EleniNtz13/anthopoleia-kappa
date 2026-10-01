@@ -2442,15 +2442,6 @@ html {
     }
 }
 
-
-.gallery-section .gallery-item {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    height: auto;
-    min-height: 0;
-    overflow: hidden;
-}
-
 .gallery-section .gallery-item {
     width: 100%;
     aspect-ratio: 1 / 1;
