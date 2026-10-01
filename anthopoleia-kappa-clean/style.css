@@ -1969,25 +1969,55 @@ body {
 
 }
 
+/* =====================================================
+   MOBILE MENU — ΚΕΝΤΡΑΡΙΣΜΕΝΟ ΣΕ ΟΛΕΣ ΤΙΣ ΣΕΛΙΔΕΣ
+   ===================================================== */
+
 @media (max-width: 800px) {
 
+    /* Το ανοιχτό hamburger menu */
     .header nav.open {
-        position: fixed;
-
-        top: 50%;
         left: 50%;
         right: auto;
 
-        width: min(90%, 420px);
-        max-height: 80vh;
+        width: 92%;
+        max-width: 420px;
 
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%);
 
-        overflow-y: auto;
+        text-align: center;
+    }
 
-        z-index: 1000;
+    /* Κεντρικά τα βασικά menu items */
+    .header nav.open > a {
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Κεντρικά οι κατηγορίες που έχουν υποκατηγορίες */
+    .header nav.open .nav-parent {
+        justify-content: center;
+    }
+
+    .header nav.open .nav-parent > a {
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Κεντρικά οι υποκατηγορίες */
+    .header nav.open .dropdown a {
+        justify-content: center;
+        text-align: center;
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+    }
+
+    /* Αφαιρούμε το hover indentation στο mobile */
+    .header nav.open .dropdown a:hover {
+        padding-left: 18px !important;
     }
 
 }
+
 
 
